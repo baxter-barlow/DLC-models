@@ -1,0 +1,10 @@
+dataset: /content/drive/MyDrive/legpos-baxter-2025-06-30
+dataset_type: multi-animal-imgaug
+num_joints: 1
+all_joints:
+- - 0
+all_joints_names:
+- toe
+net_type: dekr_w48
+global_scale: 1
+scoremap_dir: test

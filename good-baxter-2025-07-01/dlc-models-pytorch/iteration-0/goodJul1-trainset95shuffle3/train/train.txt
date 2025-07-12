@@ -1,0 +1,406 @@
+2025-07-07 18:42:11 Training with configuration:
+2025-07-07 18:42:11 data:
+2025-07-07 18:42:11   bbox_margin: 20
+2025-07-07 18:42:11   colormode: RGB
+2025-07-07 18:42:11   inference:
+2025-07-07 18:42:11     normalize_images: True
+2025-07-07 18:42:11     auto_padding:
+2025-07-07 18:42:11       pad_width_divisor: 32
+2025-07-07 18:42:11       pad_height_divisor: 32
+2025-07-07 18:42:11   train:
+2025-07-07 18:42:11     affine:
+2025-07-07 18:42:11       p: 0.5
+2025-07-07 18:42:11       rotation: 30
+2025-07-07 18:42:11       scaling: [0.5, 1.25]
+2025-07-07 18:42:11       translation: 0
+2025-07-07 18:42:11     crop_sampling:
+2025-07-07 18:42:11       width: 448
+2025-07-07 18:42:11       height: 448
+2025-07-07 18:42:11       max_shift: 0.1
+2025-07-07 18:42:11       method: hybrid
+2025-07-07 18:42:11     gaussian_noise: 12.75
+2025-07-07 18:42:11     motion_blur: True
+2025-07-07 18:42:11     normalize_images: True
+2025-07-07 18:42:11     auto_padding:
+2025-07-07 18:42:11       pad_width_divisor: 32
+2025-07-07 18:42:11       pad_height_divisor: 32
+2025-07-07 18:42:11   worker_params:
+2025-07-07 18:42:11     num_workers: 8
+2025-07-07 18:42:11     pin_memory: True
+2025-07-07 18:42:11 device: auto
+2025-07-07 18:42:11 metadata:
+2025-07-07 18:42:11   project_path: /content/drive/MyDrive/good-baxter-2025-07-01
+2025-07-07 18:42:11   pose_config_path: /content/drive/MyDrive/good-baxter-2025-07-01/dlc-models-pytorch/iteration-0/goodJul1-trainset95shuffle3/train/pytorch_config.yaml
+2025-07-07 18:42:11   bodyparts: ['toe', 'ankle', 'knee']
+2025-07-07 18:42:11   unique_bodyparts: []
+2025-07-07 18:42:11   individuals: ['animal']
+2025-07-07 18:42:11   with_identity: None
+2025-07-07 18:42:11 method: bu
+2025-07-07 18:42:11 model:
+2025-07-07 18:42:11   backbone:
+2025-07-07 18:42:11     type: HRNet
+2025-07-07 18:42:11     model_name: hrnet_w48
+2025-07-07 18:42:11     freeze_bn_stats: True
+2025-07-07 18:42:11     freeze_bn_weights: False
+2025-07-07 18:42:11     interpolate_branches: False
+2025-07-07 18:42:11     increased_channel_count: False
+2025-07-07 18:42:11   backbone_output_channels: 48
+2025-07-07 18:42:11   heads:
+2025-07-07 18:42:11     bodypart:
+2025-07-07 18:42:11       type: HeatmapHead
+2025-07-07 18:42:11       weight_init: normal
+2025-07-07 18:42:11       predictor:
+2025-07-07 18:42:11         type: HeatmapPredictor
+2025-07-07 18:42:11         apply_sigmoid: False
+2025-07-07 18:42:11         clip_scores: True
+2025-07-07 18:42:11         location_refinement: True
+2025-07-07 18:42:11         locref_std: 7.2801
+2025-07-07 18:42:11       target_generator:
+2025-07-07 18:42:11         type: HeatmapGaussianGenerator
+2025-07-07 18:42:11         num_heatmaps: 3
+2025-07-07 18:42:11         pos_dist_thresh: 17
+2025-07-07 18:42:11         heatmap_mode: KEYPOINT
+2025-07-07 18:42:11         gradient_masking: False
+2025-07-07 18:42:11         generate_locref: True
+2025-07-07 18:42:11         locref_std: 7.2801
+2025-07-07 18:42:11       criterion:
+2025-07-07 18:42:11         heatmap:
+2025-07-07 18:42:11           type: WeightedMSECriterion
+2025-07-07 18:42:11           weight: 1.0
+2025-07-07 18:42:11         locref:
+2025-07-07 18:42:11           type: WeightedHuberCriterion
+2025-07-07 18:42:11           weight: 0.05
+2025-07-07 18:42:11       heatmap_config:
+2025-07-07 18:42:11         channels: [48, 3]
+2025-07-07 18:42:11         kernel_size: [3]
+2025-07-07 18:42:11         strides: [2]
+2025-07-07 18:42:11       locref_config:
+2025-07-07 18:42:11         channels: [48, 6]
+2025-07-07 18:42:11         kernel_size: [3]
+2025-07-07 18:42:11         strides: [2]
+2025-07-07 18:42:11 net_type: hrnet_w48
+2025-07-07 18:42:11 runner:
+2025-07-07 18:42:11   type: PoseTrainingRunner
+2025-07-07 18:42:11   gpus: [0]
+2025-07-07 18:42:11   key_metric: test.mAP
+2025-07-07 18:42:11   key_metric_asc: True
+2025-07-07 18:42:11   eval_interval: 10
+2025-07-07 18:42:11   optimizer:
+2025-07-07 18:42:11     type: AdamW
+2025-07-07 18:42:11     params:
+2025-07-07 18:42:11       lr: 0.0001
+2025-07-07 18:42:11   scheduler:
+2025-07-07 18:42:11     type: LRListScheduler
+2025-07-07 18:42:11     params:
+2025-07-07 18:42:11       lr_list: [[1e-05], [1e-06]]
+2025-07-07 18:42:11       milestones: [160, 190]
+2025-07-07 18:42:11   snapshots:
+2025-07-07 18:42:11     max_snapshots: 5
+2025-07-07 18:42:11     save_epochs: 10
+2025-07-07 18:42:11     save_optimizer_state: False
+2025-07-07 18:42:11 train_settings:
+2025-07-07 18:42:11   batch_size: 32
+2025-07-07 18:42:11   dataloader_workers: 0
+2025-07-07 18:42:11   dataloader_pin_memory: False
+2025-07-07 18:42:11   display_iters: 25
+2025-07-07 18:42:11   epochs: 200
+2025-07-07 18:42:11   seed: 42
+2025-07-07 18:42:11 optimizer:
+2025-07-07 18:42:11   lr: 0.0001
+2025-07-07 18:42:11 lr_scheduler:
+2025-07-07 18:42:11   step_size: 50
+2025-07-07 18:42:11   gamma: 0.5
+2025-07-07 18:42:12 Loading pretrained weights from Hugging Face hub (timm/hrnet_w48.ms_in1k)
+2025-07-07 18:42:14 [timm/hrnet_w48.ms_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-07-07 18:42:14 Unexpected keys (downsamp_modules.0.0.bias, downsamp_modules.0.0.weight, downsamp_modules.0.1.bias, downsamp_modules.0.1.num_batches_tracked, downsamp_modules.0.1.running_mean, downsamp_modules.0.1.running_var, downsamp_modules.0.1.weight, downsamp_modules.1.0.bias, downsamp_modules.1.0.weight, downsamp_modules.1.1.bias, downsamp_modules.1.1.num_batches_tracked, downsamp_modules.1.1.running_mean, downsamp_modules.1.1.running_var, downsamp_modules.1.1.weight, downsamp_modules.2.0.bias, downsamp_modules.2.0.weight, downsamp_modules.2.1.bias, downsamp_modules.2.1.num_batches_tracked, downsamp_modules.2.1.running_mean, downsamp_modules.2.1.running_var, downsamp_modules.2.1.weight, final_layer.0.bias, final_layer.0.weight, final_layer.1.bias, final_layer.1.num_batches_tracked, final_layer.1.running_mean, final_layer.1.running_var, final_layer.1.weight, incre_modules.0.0.bn1.bias, incre_modules.0.0.bn1.num_batches_tracked, incre_modules.0.0.bn1.running_mean, incre_modules.0.0.bn1.running_var, incre_modules.0.0.bn1.weight, incre_modules.0.0.bn2.bias, incre_modules.0.0.bn2.num_batches_tracked, incre_modules.0.0.bn2.running_mean, incre_modules.0.0.bn2.running_var, incre_modules.0.0.bn2.weight, incre_modules.0.0.bn3.bias, incre_modules.0.0.bn3.num_batches_tracked, incre_modules.0.0.bn3.running_mean, incre_modules.0.0.bn3.running_var, incre_modules.0.0.bn3.weight, incre_modules.0.0.conv1.weight, incre_modules.0.0.conv2.weight, incre_modules.0.0.conv3.weight, incre_modules.0.0.downsample.0.weight, incre_modules.0.0.downsample.1.bias, incre_modules.0.0.downsample.1.num_batches_tracked, incre_modules.0.0.downsample.1.running_mean, incre_modules.0.0.downsample.1.running_var, incre_modules.0.0.downsample.1.weight, incre_modules.1.0.bn1.bias, incre_modules.1.0.bn1.num_batches_tracked, incre_modules.1.0.bn1.running_mean, incre_modules.1.0.bn1.running_var, incre_modules.1.0.bn1.weight, incre_modules.1.0.bn2.bias, incre_modules.1.0.bn2.num_batches_tracked, incre_modules.1.0.bn2.running_mean, incre_modules.1.0.bn2.running_var, incre_modules.1.0.bn2.weight, incre_modules.1.0.bn3.bias, incre_modules.1.0.bn3.num_batches_tracked, incre_modules.1.0.bn3.running_mean, incre_modules.1.0.bn3.running_var, incre_modules.1.0.bn3.weight, incre_modules.1.0.conv1.weight, incre_modules.1.0.conv2.weight, incre_modules.1.0.conv3.weight, incre_modules.1.0.downsample.0.weight, incre_modules.1.0.downsample.1.bias, incre_modules.1.0.downsample.1.num_batches_tracked, incre_modules.1.0.downsample.1.running_mean, incre_modules.1.0.downsample.1.running_var, incre_modules.1.0.downsample.1.weight, incre_modules.2.0.bn1.bias, incre_modules.2.0.bn1.num_batches_tracked, incre_modules.2.0.bn1.running_mean, incre_modules.2.0.bn1.running_var, incre_modules.2.0.bn1.weight, incre_modules.2.0.bn2.bias, incre_modules.2.0.bn2.num_batches_tracked, incre_modules.2.0.bn2.running_mean, incre_modules.2.0.bn2.running_var, incre_modules.2.0.bn2.weight, incre_modules.2.0.bn3.bias, incre_modules.2.0.bn3.num_batches_tracked, incre_modules.2.0.bn3.running_mean, incre_modules.2.0.bn3.running_var, incre_modules.2.0.bn3.weight, incre_modules.2.0.conv1.weight, incre_modules.2.0.conv2.weight, incre_modules.2.0.conv3.weight, incre_modules.2.0.downsample.0.weight, incre_modules.2.0.downsample.1.bias, incre_modules.2.0.downsample.1.num_batches_tracked, incre_modules.2.0.downsample.1.running_mean, incre_modules.2.0.downsample.1.running_var, incre_modules.2.0.downsample.1.weight, incre_modules.3.0.bn1.bias, incre_modules.3.0.bn1.num_batches_tracked, incre_modules.3.0.bn1.running_mean, incre_modules.3.0.bn1.running_var, incre_modules.3.0.bn1.weight, incre_modules.3.0.bn2.bias, incre_modules.3.0.bn2.num_batches_tracked, incre_modules.3.0.bn2.running_mean, incre_modules.3.0.bn2.running_var, incre_modules.3.0.bn2.weight, incre_modules.3.0.bn3.bias, incre_modules.3.0.bn3.num_batches_tracked, incre_modules.3.0.bn3.running_mean, incre_modules.3.0.bn3.running_var, incre_modules.3.0.bn3.weight, incre_modules.3.0.conv1.weight, incre_modules.3.0.conv2.weight, incre_modules.3.0.conv3.weight, incre_modules.3.0.downsample.0.weight, incre_modules.3.0.downsample.1.bias, incre_modules.3.0.downsample.1.num_batches_tracked, incre_modules.3.0.downsample.1.running_mean, incre_modules.3.0.downsample.1.running_var, incre_modules.3.0.downsample.1.weight, classifier.bias, classifier.weight) found while loading pretrained weights. This may be expected if model is being adapted.
+2025-07-07 18:42:23 Training with configuration:
+2025-07-07 18:42:23 data:
+2025-07-07 18:42:23   bbox_margin: 20
+2025-07-07 18:42:23   colormode: RGB
+2025-07-07 18:42:23   inference:
+2025-07-07 18:42:23     normalize_images: True
+2025-07-07 18:42:23     auto_padding:
+2025-07-07 18:42:23       pad_width_divisor: 32
+2025-07-07 18:42:23       pad_height_divisor: 32
+2025-07-07 18:42:23   train:
+2025-07-07 18:42:23     affine:
+2025-07-07 18:42:23       p: 0.5
+2025-07-07 18:42:23       rotation: 30
+2025-07-07 18:42:23       scaling: [0.5, 1.25]
+2025-07-07 18:42:23       translation: 0
+2025-07-07 18:42:23     crop_sampling:
+2025-07-07 18:42:23       width: 448
+2025-07-07 18:42:23       height: 448
+2025-07-07 18:42:23       max_shift: 0.1
+2025-07-07 18:42:23       method: hybrid
+2025-07-07 18:42:23     gaussian_noise: 12.75
+2025-07-07 18:42:23     motion_blur: True
+2025-07-07 18:42:23     normalize_images: True
+2025-07-07 18:42:23     auto_padding:
+2025-07-07 18:42:23       pad_width_divisor: 32
+2025-07-07 18:42:23       pad_height_divisor: 32
+2025-07-07 18:42:23   worker_params:
+2025-07-07 18:42:23     num_workers: 8
+2025-07-07 18:42:23     pin_memory: True
+2025-07-07 18:42:23 device: auto
+2025-07-07 18:42:23 metadata:
+2025-07-07 18:42:23   project_path: /content/drive/MyDrive/good-baxter-2025-07-01
+2025-07-07 18:42:23   pose_config_path: /content/drive/MyDrive/good-baxter-2025-07-01/dlc-models-pytorch/iteration-0/goodJul1-trainset95shuffle3/train/pytorch_config.yaml
+2025-07-07 18:42:23   bodyparts: ['toe', 'ankle', 'knee']
+2025-07-07 18:42:23   unique_bodyparts: []
+2025-07-07 18:42:23   individuals: ['animal']
+2025-07-07 18:42:23   with_identity: None
+2025-07-07 18:42:23 method: bu
+2025-07-07 18:42:23 model:
+2025-07-07 18:42:23   backbone:
+2025-07-07 18:42:23     type: HRNet
+2025-07-07 18:42:23     model_name: hrnet_w48
+2025-07-07 18:42:23     freeze_bn_stats: True
+2025-07-07 18:42:23     freeze_bn_weights: False
+2025-07-07 18:42:23     interpolate_branches: False
+2025-07-07 18:42:23     increased_channel_count: False
+2025-07-07 18:42:23   backbone_output_channels: 48
+2025-07-07 18:42:23   heads:
+2025-07-07 18:42:23     bodypart:
+2025-07-07 18:42:23       type: HeatmapHead
+2025-07-07 18:42:23       weight_init: normal
+2025-07-07 18:42:23       predictor:
+2025-07-07 18:42:23         type: HeatmapPredictor
+2025-07-07 18:42:23         apply_sigmoid: False
+2025-07-07 18:42:23         clip_scores: True
+2025-07-07 18:42:23         location_refinement: True
+2025-07-07 18:42:23         locref_std: 7.2801
+2025-07-07 18:42:23       target_generator:
+2025-07-07 18:42:23         type: HeatmapGaussianGenerator
+2025-07-07 18:42:23         num_heatmaps: 3
+2025-07-07 18:42:23         pos_dist_thresh: 17
+2025-07-07 18:42:23         heatmap_mode: KEYPOINT
+2025-07-07 18:42:23         gradient_masking: False
+2025-07-07 18:42:23         generate_locref: True
+2025-07-07 18:42:23         locref_std: 7.2801
+2025-07-07 18:42:23       criterion:
+2025-07-07 18:42:23         heatmap:
+2025-07-07 18:42:23           type: WeightedMSECriterion
+2025-07-07 18:42:23           weight: 1.0
+2025-07-07 18:42:23         locref:
+2025-07-07 18:42:23           type: WeightedHuberCriterion
+2025-07-07 18:42:23           weight: 0.05
+2025-07-07 18:42:23       heatmap_config:
+2025-07-07 18:42:23         channels: [48, 3]
+2025-07-07 18:42:23         kernel_size: [3]
+2025-07-07 18:42:23         strides: [2]
+2025-07-07 18:42:23       locref_config:
+2025-07-07 18:42:23         channels: [48, 6]
+2025-07-07 18:42:23         kernel_size: [3]
+2025-07-07 18:42:23         strides: [2]
+2025-07-07 18:42:23 net_type: hrnet_w48
+2025-07-07 18:42:23 runner:
+2025-07-07 18:42:23   type: PoseTrainingRunner
+2025-07-07 18:42:23   gpus: [0]
+2025-07-07 18:42:23   key_metric: test.mAP
+2025-07-07 18:42:23   key_metric_asc: True
+2025-07-07 18:42:23   eval_interval: 10
+2025-07-07 18:42:23   optimizer:
+2025-07-07 18:42:23     type: AdamW
+2025-07-07 18:42:23     params:
+2025-07-07 18:42:23       lr: 0.0001
+2025-07-07 18:42:23   scheduler:
+2025-07-07 18:42:23     type: LRListScheduler
+2025-07-07 18:42:23     params:
+2025-07-07 18:42:23       lr_list: [[1e-05], [1e-06]]
+2025-07-07 18:42:23       milestones: [160, 190]
+2025-07-07 18:42:23   snapshots:
+2025-07-07 18:42:23     max_snapshots: 5
+2025-07-07 18:42:23     save_epochs: 10
+2025-07-07 18:42:23     save_optimizer_state: False
+2025-07-07 18:42:23 train_settings:
+2025-07-07 18:42:23   batch_size: 32
+2025-07-07 18:42:23   dataloader_workers: 0
+2025-07-07 18:42:23   dataloader_pin_memory: False
+2025-07-07 18:42:23   display_iters: 25
+2025-07-07 18:42:23   epochs: 200
+2025-07-07 18:42:23   seed: 42
+2025-07-07 18:42:23 optimizer:
+2025-07-07 18:42:23   lr: 0.0001
+2025-07-07 18:42:23 lr_scheduler:
+2025-07-07 18:42:23   step_size: 50
+2025-07-07 18:42:23   gamma: 0.5
+2025-07-07 18:42:24 Loading pretrained weights from Hugging Face hub (timm/hrnet_w48.ms_in1k)
+2025-07-07 18:42:24 [timm/hrnet_w48.ms_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-07-07 18:42:25 Unexpected keys (downsamp_modules.0.0.bias, downsamp_modules.0.0.weight, downsamp_modules.0.1.bias, downsamp_modules.0.1.num_batches_tracked, downsamp_modules.0.1.running_mean, downsamp_modules.0.1.running_var, downsamp_modules.0.1.weight, downsamp_modules.1.0.bias, downsamp_modules.1.0.weight, downsamp_modules.1.1.bias, downsamp_modules.1.1.num_batches_tracked, downsamp_modules.1.1.running_mean, downsamp_modules.1.1.running_var, downsamp_modules.1.1.weight, downsamp_modules.2.0.bias, downsamp_modules.2.0.weight, downsamp_modules.2.1.bias, downsamp_modules.2.1.num_batches_tracked, downsamp_modules.2.1.running_mean, downsamp_modules.2.1.running_var, downsamp_modules.2.1.weight, final_layer.0.bias, final_layer.0.weight, final_layer.1.bias, final_layer.1.num_batches_tracked, final_layer.1.running_mean, final_layer.1.running_var, final_layer.1.weight, incre_modules.0.0.bn1.bias, incre_modules.0.0.bn1.num_batches_tracked, incre_modules.0.0.bn1.running_mean, incre_modules.0.0.bn1.running_var, incre_modules.0.0.bn1.weight, incre_modules.0.0.bn2.bias, incre_modules.0.0.bn2.num_batches_tracked, incre_modules.0.0.bn2.running_mean, incre_modules.0.0.bn2.running_var, incre_modules.0.0.bn2.weight, incre_modules.0.0.bn3.bias, incre_modules.0.0.bn3.num_batches_tracked, incre_modules.0.0.bn3.running_mean, incre_modules.0.0.bn3.running_var, incre_modules.0.0.bn3.weight, incre_modules.0.0.conv1.weight, incre_modules.0.0.conv2.weight, incre_modules.0.0.conv3.weight, incre_modules.0.0.downsample.0.weight, incre_modules.0.0.downsample.1.bias, incre_modules.0.0.downsample.1.num_batches_tracked, incre_modules.0.0.downsample.1.running_mean, incre_modules.0.0.downsample.1.running_var, incre_modules.0.0.downsample.1.weight, incre_modules.1.0.bn1.bias, incre_modules.1.0.bn1.num_batches_tracked, incre_modules.1.0.bn1.running_mean, incre_modules.1.0.bn1.running_var, incre_modules.1.0.bn1.weight, incre_modules.1.0.bn2.bias, incre_modules.1.0.bn2.num_batches_tracked, incre_modules.1.0.bn2.running_mean, incre_modules.1.0.bn2.running_var, incre_modules.1.0.bn2.weight, incre_modules.1.0.bn3.bias, incre_modules.1.0.bn3.num_batches_tracked, incre_modules.1.0.bn3.running_mean, incre_modules.1.0.bn3.running_var, incre_modules.1.0.bn3.weight, incre_modules.1.0.conv1.weight, incre_modules.1.0.conv2.weight, incre_modules.1.0.conv3.weight, incre_modules.1.0.downsample.0.weight, incre_modules.1.0.downsample.1.bias, incre_modules.1.0.downsample.1.num_batches_tracked, incre_modules.1.0.downsample.1.running_mean, incre_modules.1.0.downsample.1.running_var, incre_modules.1.0.downsample.1.weight, incre_modules.2.0.bn1.bias, incre_modules.2.0.bn1.num_batches_tracked, incre_modules.2.0.bn1.running_mean, incre_modules.2.0.bn1.running_var, incre_modules.2.0.bn1.weight, incre_modules.2.0.bn2.bias, incre_modules.2.0.bn2.num_batches_tracked, incre_modules.2.0.bn2.running_mean, incre_modules.2.0.bn2.running_var, incre_modules.2.0.bn2.weight, incre_modules.2.0.bn3.bias, incre_modules.2.0.bn3.num_batches_tracked, incre_modules.2.0.bn3.running_mean, incre_modules.2.0.bn3.running_var, incre_modules.2.0.bn3.weight, incre_modules.2.0.conv1.weight, incre_modules.2.0.conv2.weight, incre_modules.2.0.conv3.weight, incre_modules.2.0.downsample.0.weight, incre_modules.2.0.downsample.1.bias, incre_modules.2.0.downsample.1.num_batches_tracked, incre_modules.2.0.downsample.1.running_mean, incre_modules.2.0.downsample.1.running_var, incre_modules.2.0.downsample.1.weight, incre_modules.3.0.bn1.bias, incre_modules.3.0.bn1.num_batches_tracked, incre_modules.3.0.bn1.running_mean, incre_modules.3.0.bn1.running_var, incre_modules.3.0.bn1.weight, incre_modules.3.0.bn2.bias, incre_modules.3.0.bn2.num_batches_tracked, incre_modules.3.0.bn2.running_mean, incre_modules.3.0.bn2.running_var, incre_modules.3.0.bn2.weight, incre_modules.3.0.bn3.bias, incre_modules.3.0.bn3.num_batches_tracked, incre_modules.3.0.bn3.running_mean, incre_modules.3.0.bn3.running_var, incre_modules.3.0.bn3.weight, incre_modules.3.0.conv1.weight, incre_modules.3.0.conv2.weight, incre_modules.3.0.conv3.weight, incre_modules.3.0.downsample.0.weight, incre_modules.3.0.downsample.1.bias, incre_modules.3.0.downsample.1.num_batches_tracked, incre_modules.3.0.downsample.1.running_mean, incre_modules.3.0.downsample.1.running_var, incre_modules.3.0.downsample.1.weight, classifier.bias, classifier.weight) found while loading pretrained weights. This may be expected if model is being adapted.
+2025-07-07 18:42:25 Data Transforms:
+2025-07-07 18:42:25   Training:   Compose([
+  Affine(always_apply=False, p=0.5, interpolation=1, mask_interpolation=0, cval=0, mode=0, scale={'x': (0.5, 1.25), 'y': (0.5, 1.25)}, translate_percent=None, translate_px={'x': (0, 0), 'y': (0, 0)}, rotate=(-30, 30), fit_output=False, shear={'x': (0.0, 0.0), 'y': (0.0, 0.0)}, cval_mask=0, keep_ratio=True, rotate_method='largest_box'),
+  PadIfNeeded(always_apply=True, p=1.0, min_height=448, min_width=448, pad_height_divisor=None, pad_width_divisor=None, position=PositionType.CENTER, border_mode=0, value=None, mask_value=None),
+  KeypointAwareCrop(always_apply=True, p=1.0, width=448, height=448, max_shift=0.1, crop_sampling='hybrid'),
+  MotionBlur(always_apply=False, p=0.5, blur_limit=(3, 7), allow_shifted=True),
+  GaussNoise(always_apply=False, p=0.5, var_limit=(0, 162.5625), per_channel=True, mean=0),
+  PadIfNeeded(always_apply=False, p=1.0, min_height=None, min_width=None, pad_height_divisor=32, pad_width_divisor=32, position=PositionType.RANDOM, border_mode=4, value=None, mask_value=None),
+  Normalize(always_apply=False, p=1.0, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], max_pixel_value=255.0),
+], p=1.0, bbox_params={'format': 'coco', 'label_fields': ['bbox_labels'], 'min_area': 0.0, 'min_visibility': 0.0, 'min_width': 0.0, 'min_height': 0.0, 'check_each_transform': True}, keypoint_params={'format': 'xy', 'label_fields': ['class_labels'], 'remove_invisible': False, 'angle_in_degrees': True, 'check_each_transform': True}, additional_targets={}, is_check_shapes=True)
+2025-07-07 18:42:25   Validation: Compose([
+  PadIfNeeded(always_apply=False, p=1.0, min_height=None, min_width=None, pad_height_divisor=32, pad_width_divisor=32, position=PositionType.RANDOM, border_mode=4, value=None, mask_value=None),
+  Normalize(always_apply=False, p=1.0, mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], max_pixel_value=255.0),
+], p=1.0, bbox_params={'format': 'coco', 'label_fields': ['bbox_labels'], 'min_area': 0.0, 'min_visibility': 0.0, 'min_width': 0.0, 'min_height': 0.0, 'check_each_transform': True}, keypoint_params={'format': 'xy', 'label_fields': ['class_labels'], 'remove_invisible': False, 'angle_in_degrees': True, 'check_each_transform': True}, additional_targets={}, is_check_shapes=True)
+2025-07-07 18:42:25 
+Note: According to your model configuration, you're training with batch size 1 and/or ``freeze_bn_stats=false``. This is not an optimal setting if you have powerful GPUs.
+This is good for small batch sizes (e.g., when training on a CPU), where you should keep ``freeze_bn_stats=true``.
+If you're using a GPU to train, you can obtain faster performance by setting a larger batch size (the biggest power of 2 where you don't geta CUDA out-of-memory error, such as 8, 16, 32 or 64 depending on the model, size of your images, and GPU memory) and ``freeze_bn_stats=false`` for the backbone of your model. 
+This also allows you to increase the learning rate (empirically you can scale the learning rate by sqrt(batch_size) times).
+
+2025-07-07 18:42:25 Using 72 images and 4 for testing
+2025-07-07 18:42:25 
+Starting pose model training...
+--------------------------------------------------
+2025-07-07 18:42:41 Epoch 1/200 (lr=0.0001), train loss 0.01532
+2025-07-07 18:42:46 Epoch 2/200 (lr=0.0001), train loss 0.01501
+2025-07-07 18:42:50 Epoch 3/200 (lr=0.0001), train loss 0.01422
+2025-07-07 18:42:54 Epoch 4/200 (lr=0.0001), train loss 0.01160
+2025-07-07 18:42:59 Epoch 5/200 (lr=0.0001), train loss 0.01077
+2025-07-07 18:43:03 Epoch 6/200 (lr=0.0001), train loss 0.00916
+2025-07-07 18:43:07 Epoch 7/200 (lr=0.0001), train loss 0.00755
+2025-07-07 18:43:11 Epoch 8/200 (lr=0.0001), train loss 0.00644
+2025-07-07 18:43:16 Epoch 9/200 (lr=0.0001), train loss 0.00511
+2025-07-07 18:43:20 Training for epoch 10 done, starting evaluation
+2025-07-07 18:43:21 Epoch 10/200 (lr=0.0001), train loss 0.00439, valid loss 0.00555
+2025-07-07 18:43:21 Model performance:
+2025-07-07 18:43:21   metrics/test.rmse:         157.95
+2025-07-07 18:43:21   metrics/test.rmse_pcutoff:    nan
+2025-07-07 18:43:21   metrics/test.mAP:            0.00
+2025-07-07 18:43:21   metrics/test.mAR:            0.00
+2025-07-07 18:43:26 Epoch 11/200 (lr=0.0001), train loss 0.00402
+2025-07-07 18:43:30 Epoch 12/200 (lr=0.0001), train loss 0.00332
+2025-07-07 18:43:34 Epoch 13/200 (lr=0.0001), train loss 0.00297
+2025-07-07 18:43:38 Epoch 14/200 (lr=0.0001), train loss 0.00331
+2025-07-07 18:43:43 Epoch 15/200 (lr=0.0001), train loss 0.00297
+2025-07-07 18:43:47 Epoch 16/200 (lr=0.0001), train loss 0.00285
+2025-07-07 18:43:51 Epoch 17/200 (lr=0.0001), train loss 0.00236
+2025-07-07 18:43:55 Epoch 18/200 (lr=0.0001), train loss 0.00268
+2025-07-07 18:44:00 Epoch 19/200 (lr=0.0001), train loss 0.00246
+2025-07-07 18:44:04 Training for epoch 20 done, starting evaluation
+2025-07-07 18:44:05 Epoch 20/200 (lr=0.0001), train loss 0.00255, valid loss 0.00460
+2025-07-07 18:44:05 Model performance:
+2025-07-07 18:44:05   metrics/test.rmse:         167.91
+2025-07-07 18:44:05   metrics/test.rmse_pcutoff:    nan
+2025-07-07 18:44:05   metrics/test.mAP:            0.00
+2025-07-07 18:44:05   metrics/test.mAR:            0.00
+2025-07-07 18:44:09 Epoch 21/200 (lr=0.0001), train loss 0.00232
+2025-07-07 18:44:13 Epoch 22/200 (lr=0.0001), train loss 0.00220
+2025-07-07 18:44:18 Epoch 23/200 (lr=0.0001), train loss 0.00211
+2025-07-07 18:44:22 Epoch 24/200 (lr=0.0001), train loss 0.00214
+2025-07-07 18:44:26 Epoch 25/200 (lr=0.0001), train loss 0.00189
+2025-07-07 18:44:30 Epoch 26/200 (lr=0.0001), train loss 0.00197
+2025-07-07 18:44:34 Epoch 27/200 (lr=0.0001), train loss 0.00208
+2025-07-07 18:44:39 Epoch 28/200 (lr=0.0001), train loss 0.00176
+2025-07-07 18:44:44 Epoch 29/200 (lr=0.0001), train loss 0.00199
+2025-07-07 18:44:48 Training for epoch 30 done, starting evaluation
+2025-07-07 18:44:49 Epoch 30/200 (lr=0.0001), train loss 0.00156, valid loss 0.00446
+2025-07-07 18:44:49 Model performance:
+2025-07-07 18:44:49   metrics/test.rmse:          88.42
+2025-07-07 18:44:49   metrics/test.rmse_pcutoff:    nan
+2025-07-07 18:44:49   metrics/test.mAP:           40.00
+2025-07-07 18:44:49   metrics/test.mAR:           40.00
+2025-07-07 18:44:53 Epoch 31/200 (lr=0.0001), train loss 0.00169
+2025-07-07 18:44:57 Epoch 32/200 (lr=0.0001), train loss 0.00187
+2025-07-07 18:45:01 Epoch 33/200 (lr=0.0001), train loss 0.00169
+2025-07-07 18:45:06 Epoch 34/200 (lr=0.0001), train loss 0.00163
+2025-07-07 18:45:10 Epoch 35/200 (lr=0.0001), train loss 0.00175
+2025-07-07 18:45:14 Epoch 36/200 (lr=0.0001), train loss 0.00145
+2025-07-07 18:45:18 Epoch 37/200 (lr=0.0001), train loss 0.00155
+2025-07-07 18:45:22 Epoch 38/200 (lr=0.0001), train loss 0.00122
+2025-07-07 18:45:26 Epoch 39/200 (lr=0.0001), train loss 0.00159
+2025-07-07 18:45:31 Training for epoch 40 done, starting evaluation
+2025-07-07 18:45:32 Epoch 40/200 (lr=0.0001), train loss 0.00125, valid loss 0.00470
+2025-07-07 18:45:32 Model performance:
+2025-07-07 18:45:32   metrics/test.rmse:          20.47
+2025-07-07 18:45:32   metrics/test.rmse_pcutoff:   5.65
+2025-07-07 18:45:32   metrics/test.mAP:           81.44
+2025-07-07 18:45:32   metrics/test.mAR:           85.00
+2025-07-07 18:45:36 Epoch 41/200 (lr=0.0001), train loss 0.00155
+2025-07-07 18:45:40 Epoch 42/200 (lr=0.0001), train loss 0.00162
+2025-07-07 18:45:44 Epoch 43/200 (lr=0.0001), train loss 0.00122
+2025-07-07 18:45:48 Epoch 44/200 (lr=0.0001), train loss 0.00135
+2025-07-07 18:45:52 Epoch 45/200 (lr=0.0001), train loss 0.00122
+2025-07-07 18:45:57 Epoch 46/200 (lr=0.0001), train loss 0.00133
+2025-07-07 18:46:01 Epoch 47/200 (lr=0.0001), train loss 0.00106
+2025-07-07 18:46:06 Epoch 48/200 (lr=0.0001), train loss 0.00114
+2025-07-07 18:46:10 Epoch 49/200 (lr=0.0001), train loss 0.00116
+2025-07-07 18:46:14 Training for epoch 50 done, starting evaluation
+2025-07-07 18:46:15 Epoch 50/200 (lr=0.0001), train loss 0.00108, valid loss 0.00443
+2025-07-07 18:46:15 Model performance:
+2025-07-07 18:46:15   metrics/test.rmse:          20.13
+2025-07-07 18:46:15   metrics/test.rmse_pcutoff:  20.13
+2025-07-07 18:46:15   metrics/test.mAP:           81.44
+2025-07-07 18:46:15   metrics/test.mAR:           85.00
+2025-07-07 18:46:19 Epoch 51/200 (lr=0.0001), train loss 0.00079
+2025-07-07 18:46:23 Epoch 52/200 (lr=0.0001), train loss 0.00098
+2025-07-07 18:46:28 Epoch 53/200 (lr=0.0001), train loss 0.00108
+2025-07-07 18:46:32 Epoch 54/200 (lr=0.0001), train loss 0.00080
+2025-07-07 18:46:36 Epoch 55/200 (lr=0.0001), train loss 0.00105
+2025-07-07 18:46:40 Epoch 56/200 (lr=0.0001), train loss 0.00105
+2025-07-07 18:46:44 Epoch 57/200 (lr=0.0001), train loss 0.00125
+2025-07-07 18:46:48 Epoch 58/200 (lr=0.0001), train loss 0.00113
+2025-07-07 18:46:53 Epoch 59/200 (lr=0.0001), train loss 0.00162
+2025-07-07 18:46:57 Training for epoch 60 done, starting evaluation
+2025-07-07 18:46:59 Epoch 60/200 (lr=0.0001), train loss 0.00124, valid loss 0.00405
+2025-07-07 18:46:59 Model performance:
+2025-07-07 18:46:59   metrics/test.rmse:          20.16
+2025-07-07 18:46:59   metrics/test.rmse_pcutoff:  21.12
+2025-07-07 18:46:59   metrics/test.mAP:           81.44
+2025-07-07 18:46:59   metrics/test.mAR:           85.00
+2025-07-07 18:47:03 Epoch 61/200 (lr=0.0001), train loss 0.00109
+2025-07-07 18:47:07 Epoch 62/200 (lr=0.0001), train loss 0.00092
+2025-07-07 18:47:11 Epoch 63/200 (lr=0.0001), train loss 0.00108
+2025-07-07 18:47:15 Epoch 64/200 (lr=0.0001), train loss 0.00098
+2025-07-07 18:47:19 Epoch 65/200 (lr=0.0001), train loss 0.00092
+2025-07-07 18:47:23 Epoch 66/200 (lr=0.0001), train loss 0.00087
+2025-07-07 18:47:27 Epoch 67/200 (lr=0.0001), train loss 0.00075
+2025-07-07 18:47:32 Epoch 68/200 (lr=0.0001), train loss 0.00089
+2025-07-07 18:47:36 Epoch 69/200 (lr=0.0001), train loss 0.00087
+2025-07-07 18:47:41 Training for epoch 70 done, starting evaluation
+2025-07-07 18:47:42 Epoch 70/200 (lr=0.0001), train loss 0.00073, valid loss 0.00397
+2025-07-07 18:47:42 Model performance:
+2025-07-07 18:47:42   metrics/test.rmse:          20.09
+2025-07-07 18:47:42   metrics/test.rmse_pcutoff:  20.09
+2025-07-07 18:47:42   metrics/test.mAP:           81.44
+2025-07-07 18:47:42   metrics/test.mAR:           85.00
+2025-07-07 18:47:46 Epoch 71/200 (lr=0.0001), train loss 0.00087
+2025-07-07 18:47:50 Epoch 72/200 (lr=0.0001), train loss 0.00071
+2025-07-07 18:47:54 Epoch 73/200 (lr=0.0001), train loss 0.00071
+2025-07-07 18:47:58 Epoch 74/200 (lr=0.0001), train loss 0.00069
+2025-07-07 18:48:03 Epoch 75/200 (lr=0.0001), train loss 0.00073
+2025-07-07 18:48:07 Epoch 76/200 (lr=0.0001), train loss 0.00073
+2025-07-07 18:48:11 Epoch 77/200 (lr=0.0001), train loss 0.00081
+2025-07-07 18:48:15 Epoch 78/200 (lr=0.0001), train loss 0.00081
+2025-07-07 18:48:20 Epoch 79/200 (lr=0.0001), train loss 0.00080
+2025-07-07 18:48:24 Training for epoch 80 done, starting evaluation
+2025-07-07 18:48:25 Epoch 80/200 (lr=0.0001), train loss 0.00090, valid loss 0.00379
+2025-07-07 18:48:25 Model performance:
+2025-07-07 18:48:25   metrics/test.rmse:          20.04
+2025-07-07 18:48:25   metrics/test.rmse_pcutoff:  20.04
+2025-07-07 18:48:25   metrics/test.mAP:           85.15
+2025-07-07 18:48:25   metrics/test.mAR:           85.00
+2025-07-07 18:48:29 Epoch 81/200 (lr=0.0001), train loss 0.00086
+2025-07-07 18:48:34 Epoch 82/200 (lr=0.0001), train loss 0.00089
+2025-07-07 18:48:38 Epoch 83/200 (lr=0.0001), train loss 0.00083
+2025-07-07 18:48:42 Epoch 84/200 (lr=0.0001), train loss 0.00096
+2025-07-07 18:48:46 Epoch 85/200 (lr=0.0001), train loss 0.00085
+2025-07-07 18:48:50 Epoch 86/200 (lr=0.0001), train loss 0.00075
+2025-07-07 18:48:55 Epoch 87/200 (lr=0.0001), train loss 0.00077
+2025-07-07 18:48:59 Epoch 88/200 (lr=0.0001), train loss 0.00063
+2025-07-07 18:49:03 Epoch 89/200 (lr=0.0001), train loss 0.00072
+2025-07-07 18:49:07 Training for epoch 90 done, starting evaluation
+2025-07-07 18:49:08 Epoch 90/200 (lr=0.0001), train loss 0.00057, valid loss 0.00455
+2025-07-07 18:49:08 Model performance:
+2025-07-07 18:49:08   metrics/test.rmse:          20.22
+2025-07-07 18:49:08   metrics/test.rmse_pcutoff:  20.22
+2025-07-07 18:49:08   metrics/test.mAP:           85.15
+2025-07-07 18:49:08   metrics/test.mAR:           85.00
+2025-07-07 18:49:13 Epoch 91/200 (lr=0.0001), train loss 0.00068
+2025-07-07 18:49:17 Epoch 92/200 (lr=0.0001), train loss 0.00068
+2025-07-07 18:49:21 Epoch 93/200 (lr=0.0001), train loss 0.00074
+2025-07-07 18:49:25 Epoch 94/200 (lr=0.0001), train loss 0.00080
+2025-07-07 18:49:29 Epoch 95/200 (lr=0.0001), train loss 0.00062
+2025-07-07 18:49:33 Epoch 96/200 (lr=0.0001), train loss 0.00078
+2025-07-07 18:49:38 Epoch 97/200 (lr=0.0001), train loss 0.00084
+2025-07-07 18:49:42 Epoch 98/200 (lr=0.0001), train loss 0.00061

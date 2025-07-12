@@ -1,0 +1,111 @@
+# Project definitions (do not edit)
+Task: good
+scorer: baxter
+date: Jul1
+multianimalproject: false
+identity:
+
+
+# Project path (change when moving around)
+project_path: /content/drive/MyDrive/good-baxter-2025-07-01
+
+
+# Default DeepLabCut engine to use for shuffle creation (either pytorch or tensorflow)
+engine: pytorch
+
+
+# Annotation data set configuration (and individual video cropping parameters)
+video_sets:
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_002.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_016.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_015.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_014.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_004.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_005.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_011.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_007.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_013.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_012.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_006.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_023.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_006 2.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_036.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_022.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_019.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_024.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_018.mp4:
+    crop: 0, 700, 0, 700
+  /Users/baxterbarlow/Downloads/stim_clips/stim_block_027.mp4:
+    crop: 0, 700, 0, 700
+bodyparts:
+- toe
+- ankle
+- knee
+
+
+# Fraction of video to start/stop when extracting frames for labeling/refinement
+start: 0
+stop: 1
+numframes2pick: 4
+
+
+# Plotting configuration
+skeleton:
+- - bodypart1
+  - bodypart2
+- - objectA
+  - bodypart3
+skeleton_color: black
+pcutoff: 0.6
+dotsize: 12
+alphavalue: 0.7
+colormap: rainbow
+
+
+# Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 0
+default_net_type: resnet_50
+default_augmenter: default
+snapshotindex: -1
+detector_snapshotindex: -1
+batch_size: 64
+detector_batch_size: 1
+
+
+# Cropping Parameters (for analysis and outlier frame detection)
+cropping: false
+#if cropping is true for analysis, then set the values here:
+x1: 0
+x2: 640
+y1: 277
+y2: 624
+
+
+# Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 50
+- 50
+move2corner: true
+
+
+# Conversion tables to fine-tune SuperAnimal weights
+SuperAnimalConversionTables:

@@ -1,0 +1,213 @@
+# Project definitions (do not edit)
+Task: legpos
+scorer: baxter
+date: Jun30
+multianimalproject: false
+identity:
+
+
+# Project path (change when moving around)
+project_path: /content/drive/MyDrive/legpos-baxter-2025-06-30
+
+
+# Default DeepLabCut engine to use for shuffle creation (either pytorch or tensorflow)
+engine: pytorch
+
+
+# Annotation data set configuration (and individual video cropping parameters)
+video_sets:
+  /Users/baxterbarlow/Downloads/videos/P46_14weeks.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P45_2weeks_2.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P46_6weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P6_6 weeks.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P37_8weeks_terminal.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/I88_4weeks.mp4:
+    crop: 0, 1080, 0, 1920
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D78_8weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P46_4weeks_1.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P45_2weeks_1.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/C_D_I_H group/H99_8weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/H100_12weeks.mp4:
+    crop: 0, 1080, 0, 1920
+  /Users/baxterbarlow/Downloads/videos/P46_4weeks_2.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P46_18weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P47_2weeks.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/C68_16weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P50_14weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/H96_8weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/p5 12 wks.avi:
+    crop: 0, 640, 0, 480
+  /Users/baxterbarlow/Downloads/videos/P47_4weeks.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P46_20weeks.MOV:
+    crop: 0, 3840, 0, 2160
+  /Users/baxterbarlow/Downloads/videos/H100_4weeks.mp4:
+    crop: 0, 1080, 0, 1920
+  /Users/baxterbarlow/Downloads/videos/P46_14weeks_1.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D77_8weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/C69_18weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P46_14weeks_2.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P24_12weeks_1.mp4:
+    crop: 0, 960, 0, 540
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D80_10weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P39_8weeks_terminal.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P24_12weeks_3 (1).mp4:
+    crop: 0, 960, 0, 540
+  /Users/baxterbarlow/Downloads/videos/P24_12weeks_2.mp4:
+    crop: 0, 960, 0, 540
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D58_20weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/p5 12 wks repeat.avi:
+    crop: 0, 640, 0, 480
+  /Users/baxterbarlow/Downloads/C_D_I_H group/H96_6weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D92_10weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P50_16weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D92_8weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/I62_4weeks.mp4:
+    crop: 0, 1080, 0, 1920
+  /Users/baxterbarlow/Downloads/videos/P47_14weeks_negative response_paralysis.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P45_6weeks_1.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P41_4weeks_tiny toe flinch_2.mp4:
+    crop: 0, 960, 0, 540
+  /Users/baxterbarlow/Downloads/videos/P47_1week_2.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P1_8 weeks_under skin.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P41_8weeks_terminal.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D56_20weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P45_6weeks_2.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P41_4weeks_tiny toe flinch_1.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P47_1week_1.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P6_12weeks_under skin_2.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P6_12weeks_under skin_3.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P50_8weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P47_6weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/H100_10weeks.mp4:
+    crop: 0, 1080, 0, 1920
+  /Users/baxterbarlow/Downloads/videos/P46_16weeks.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P6_12weeks_under skin_1.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D77_12weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P6_8weeks.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P47_14weeks.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/H98_8weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P1_8weeks.mp4:
+    crop: 0, 540, 0, 960
+  /Users/baxterbarlow/Downloads/videos/P47 paralysis at Week 13.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D80_12weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D58_16weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P47_14weeks (1).mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D79_10weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D55_20weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P39_6weeks.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D56_22weeks_REPRESENTATIVE.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/C_D_I_H group/D91_10weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P46_22weeks.MOV:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/P47_2weeks_1.mp4:
+    crop: 0, 1920, 0, 1080
+  /Users/baxterbarlow/Downloads/videos/H100_6weeks.mp4:
+    crop: 0, 1080, 0, 1920
+bodyparts:
+- toe
+
+
+# Fraction of video to start/stop when extracting frames for labeling/refinement
+start: 0
+stop: 1
+numframes2pick: 5
+
+
+# Plotting configuration
+skeleton:
+- - bodypart1
+  - bodypart2
+- - objectA
+  - bodypart3
+skeleton_color: black
+pcutoff: 0.6
+dotsize: 12
+alphavalue: 0.7
+colormap: rainbow
+
+
+# Training,Evaluation and Analysis configuration
+TrainingFraction:
+- 0.95
+iteration: 0
+default_net_type: resnet_50
+default_augmenter: default
+snapshotindex: -1
+detector_snapshotindex: -1
+batch_size: 64
+detector_batch_size: 1
+
+
+# Cropping Parameters (for analysis and outlier frame detection)
+cropping: false
+#if cropping is true for analysis, then set the values here:
+x1: 0
+x2: 640
+y1: 277
+y2: 624
+
+
+# Refinement configuration (parameters from annotation dataset configuration also relevant in this stage)
+corner2move2:
+- 50
+- 50
+move2corner: true
+
+
+# Conversion tables to fine-tune SuperAnimal weights
+SuperAnimalConversionTables:
