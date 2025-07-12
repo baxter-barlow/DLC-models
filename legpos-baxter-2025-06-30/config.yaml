@@ -90,8 +90,6 @@ video_sets:
     crop: 0, 1920, 0, 1080
   /Users/baxterbarlow/Downloads/videos/I62_4weeks.mp4:
     crop: 0, 1080, 0, 1920
-  /Users/baxterbarlow/Downloads/videos/P47_14weeks_negative response_paralysis.mp4:
-    crop: 0, 1920, 0, 1080
   /Users/baxterbarlow/Downloads/videos/P45_6weeks_1.mp4:
     crop: 0, 1920, 0, 1080
   /Users/baxterbarlow/Downloads/videos/P41_4weeks_tiny toe flinch_2.mp4:
